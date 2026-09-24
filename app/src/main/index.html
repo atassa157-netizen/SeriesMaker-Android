@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SeriesMaker AI</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#0b1020;color:#fff}.wrap{max-width:700px;margin:auto;padding:24px 18px}.card{background:#151c32;padding:20px;border-radius:20px;margin:18px 0}h1{text-align:center}label{display:block;margin:14px 0 7px;font-weight:bold}input,select,textarea,button{width:100%;padding:14px;border-radius:12px;font-size:16px}input,select,textarea{border:1px solid #303b5d;background:#0e1528;color:#fff}textarea{min-height:120px}button{border:0;margin-top:18px;font-weight:bold}#result{white-space:pre-wrap;line-height:1.6;background:#0e1528;padding:15px;border-radius:14px;min-height:100px}
+</style>
+</head>
+<body><div class="wrap">
+<h1>🎬 SeriesMaker AI</h1>
+<div class="card">
+<label>שם הסדרה</label><input id="name" placeholder="שם הסדרה">
+<label>סוג הסדרה</label><select id="genre"><option>אנימציה</option><option>קומדיה</option><option>הרפתקאות</option><option>פנטזיה</option><option>מדע בדיוני</option></select>
+<label>קהל יעד</label><select id="audience"><option>לכל המשפחה</option><option>ילדים</option><option>נוער</option><option>קהל כללי</option></select>
+<label>רעיון לסדרה</label><textarea id="idea" placeholder="כתוב את הרעיון שלך..."></textarea>
+<button onclick="make()">✨ צור תסריט</button>
+</div>
+<div class="card"><h2>התוצאה</h2><div id="result">התסריט שלך יופיע כאן.</div><button onclick="copyText()">📋 העתק תוצאה</button></div>
+</div>
+<script>
+function make(){
+let n=document.getElementById('name').value.trim()||'הסדרה החדשה שלי';
+let g=document.getElementById('genre').value,a=document.getElementById('audience').value;
+let i=document.getElementById('idea').value.trim()||'חבורה של חברים יוצאת להרפתקה בלתי צפויה.';
+document.getElementById('result').textContent=`🎬 שם הסדרה: ${n}
+
+🎭 ז'אנר: ${g}
+👥 קהל יעד: ${a}
+
+💡 רעיון:
+${i}
+
+📺 פרק 1 – ההתחלה
+
+ביום שנראה רגיל לחלוטין מתגלה רמז מסתורי. שלושה חברים מחליטים לחקור אותו, ובדרך נתקלים בבעיה שמאלצת אותם לעבוד יחד. כשהם חושבים שהכול הסתיים, מופיע רמז חדש שמוביל להרפתקה גדולה עוד יותר.
+
+🎬 סוף פרק 1
+➡️ המשך בפרק הבא.`;
+}
+function copyText(){navigator.clipboard.writeText(document.getElementById('result').innerText).then(()=>alert('התסריט הועתק!'))}
+</script></body></html>
